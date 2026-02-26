@@ -10,18 +10,18 @@ menuToggle.addEventListener('click', () => {
 });
 
 // 2. Weather API
-async function fetchAccraWeather() {
+async function fetchGhanaWeather() {
     const weatherEl = document.getElementById('weather-display');
     try {
-        const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=5.556&longitude=-0.196&current_weather=true');
-        const data = await res.json();
-        const temp = data.current_weather.temperature;
-        weatherEl.innerHTML = `<i class="fas fa-sun"></i> Accra: ${temp}°C — Perfect for Xploring!`;
-    } catch (err) {
-        weatherEl.innerHTML = `<i class="fas fa-map-marker-alt"></i> Welcome to Accra, Ghana`;
+        const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=5.56&longitude=-0.20&current_weather=true');
+        const data = await response.json();
+        const temp = Math.round(data.current_weather.temperature);
+        weatherEl.innerHTML = `<i class="fas fa-sun"></i> Ghana: ${temp}°C — Perfect for Xploring!`;
+    } catch (error) {
+        weatherEl.innerHTML = `<i class="fas fa-map-marker-alt"></i> Welcome to Ghana`;
     }
 }
-window.onload = fetchAccraWeather;
+window.onload = fetchGhanaWeather;
 
 // 3. FAQ Toggler (Only Answer Toggles)
 function toggleFaq(headerElement) {
